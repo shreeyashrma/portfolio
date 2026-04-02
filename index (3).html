@@ -1,0 +1,605 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Shreeya Sharma | Microbiology & Biotech Researcher</title>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@300;400;500&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --ink:     #1a1c22;
+      --paper:   #f8f7f4;
+      --cream:   #f0ede6;
+      --card:    #eceae3;
+      --rule:    #d8d4ca;
+      --muted:   #6b6860;
+      --gold:    #b08d57;
+      --gold-lt: #d4aa72;
+      --teal:    #2a6b72;
+      --teal-lt: #3d8a92;
+      --dark:    #111318;
+      --dark2:   #181b23;
+      --serif:   'Cormorant Garamond', Georgia, serif;
+      --sans:    'Inter', system-ui, sans-serif;
+      --mono:    'JetBrains Mono', monospace;
+    }
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body { background: var(--paper); color: var(--ink); font-family: var(--sans); font-size: 16px; line-height: 1.65; overflow-x: hidden; }
+
+    /* NAV */
+    nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 1.1rem 3rem;
+      background: rgba(248,247,244,0.93); backdrop-filter: blur(14px);
+      border-bottom: 1px solid var(--rule);
+    }
+    .nav-logo { font-family: var(--mono); font-size: 0.73rem; letter-spacing: 0.12em; color: var(--teal); text-transform: uppercase; }
+    .nav-links { display: flex; gap: 2rem; list-style: none; }
+    .nav-links a { text-decoration: none; color: var(--muted); font-size: 0.75rem; letter-spacing: 0.04em; font-family: var(--mono); transition: color 0.2s; }
+    .nav-links a:hover { color: var(--teal); }
+
+    /* HERO */
+    .hero {
+      min-height: 100vh; display: grid; grid-template-columns: 1.15fr 0.85fr;
+      padding-top: 4.5rem; position: relative; overflow: hidden;
+    }
+    .hero::before {
+      content: ''; position: absolute; inset: 0; pointer-events: none;
+      background:
+        radial-gradient(ellipse 55% 65% at 72% 38%, rgba(42,107,114,0.08) 0%, transparent 65%),
+        radial-gradient(ellipse 40% 40% at 15% 85%, rgba(176,141,87,0.06) 0%, transparent 55%);
+    }
+    .hero::after {
+      content: ''; position: absolute; inset: 0; pointer-events: none;
+      background-image:
+        linear-gradient(rgba(42,107,114,0.025) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(42,107,114,0.025) 1px, transparent 1px);
+      background-size: 52px 52px;
+    }
+    .hero-text { display: flex; flex-direction: column; justify-content: center; padding: 5rem 4rem 5rem 6rem; position: relative; z-index: 1; }
+    .eyebrow { font-family: var(--mono); font-size: 0.68rem; letter-spacing: 0.2em; color: var(--gold); text-transform: uppercase; margin-bottom: 1.75rem; display: flex; align-items: center; gap: 1rem; }
+    .eyebrow::before { content: ''; display: block; width: 2.5rem; height: 1px; background: var(--gold); }
+    h1 { font-family: var(--serif); font-size: clamp(4rem, 5.5vw, 6.5rem); line-height: 0.95; font-weight: 300; color: var(--ink); margin-bottom: 1.75rem; letter-spacing: -0.01em; }
+    h1 em { color: var(--teal); font-style: italic; }
+    .hero-sub { font-size: 1rem; color: var(--muted); max-width: 510px; line-height: 1.8; margin-bottom: 2.5rem; font-weight: 300; }
+    .hero-sub strong { color: var(--ink); font-weight: 500; }
+    .btn-row { display: flex; gap: 1rem; flex-wrap: wrap; }
+    .btn { display: inline-flex; align-items: center; gap: 0.5rem; padding: 0.8rem 2rem; font-family: var(--mono); font-size: 0.7rem; letter-spacing: 0.1em; text-transform: uppercase; text-decoration: none; border: 1.5px solid; cursor: pointer; transition: all 0.22s; }
+    .btn-primary { background: var(--teal); color: #fff; border-color: var(--teal); }
+    .btn-primary:hover { background: #1f545a; border-color: #1f545a; }
+    .btn-ghost { background: transparent; color: var(--ink); border-color: var(--rule); }
+    .btn-ghost:hover { border-color: var(--teal); color: var(--teal); }
+    .hero-right { display: flex; flex-direction: column; justify-content: center; align-items: flex-start; padding: 4rem 4rem 4rem 1.5rem; position: relative; z-index: 1; gap: 1rem; }
+    .stat-card { background: #fff; border: 1px solid var(--rule); padding: 1.4rem 1.75rem; width: 100%; max-width: 370px; position: relative; box-shadow: 0 2px 14px rgba(0,0,0,0.04); }
+    .stat-card::before { content: ''; position: absolute; left: 0; top: 0; bottom: 0; width: 3px; background: var(--teal); }
+    .stat-card.gold::before { background: var(--gold); }
+    .stat-label-sm { font-family: var(--mono); font-size: 0.6rem; letter-spacing: 0.14em; text-transform: uppercase; color: var(--muted); margin-bottom: 0.3rem; }
+    .stat-val { font-family: var(--serif); font-size: 2.3rem; color: var(--teal); line-height: 1; font-weight: 400; }
+    .stat-card.gold .stat-val { color: var(--gold); }
+    .stat-sub { font-size: 0.77rem; color: var(--muted); margin-top: 0.2rem; }
+    .live-badge { display: inline-flex; align-items: center; gap: 0.5rem; font-family: var(--mono); font-size: 0.63rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--teal); background: rgba(42,107,114,0.08); border: 1px solid rgba(42,107,114,0.2); padding: 0.5rem 1rem; }
+    .live-dot { width: 6px; height: 6px; background: var(--teal); border-radius: 50%; animation: blink 2s infinite; flex-shrink: 0; }
+    @keyframes blink { 0%,100%{opacity:1} 50%{opacity:0.3} }
+
+    /* SECTION BASE */
+    section { padding: 6rem; }
+    .label { font-family: var(--mono); font-size: 0.63rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--gold); margin-bottom: 0.9rem; display: flex; align-items: center; gap: 0.75rem; }
+    .label::before { content: ''; display: block; width: 1.75rem; height: 1px; background: var(--gold); }
+    h2 { font-family: var(--serif); font-size: clamp(2.2rem, 3.2vw, 3.4rem); font-weight: 300; color: var(--ink); line-height: 1.1; margin-bottom: 0.5rem; }
+    h2 em { color: var(--teal); font-style: italic; }
+    .lead { color: var(--muted); font-size: 0.97rem; max-width: 580px; margin-bottom: 3.5rem; line-height: 1.8; font-weight: 300; }
+
+    /* ABOUT */
+    #about { background: var(--dark); color: var(--paper); }
+    #about .label { color: var(--gold-lt); }
+    #about .label::before { background: var(--gold-lt); }
+    #about h2 { color: #f0ede6; }
+    #about h2 em { color: var(--gold-lt); }
+    #about .lead { color: #7a7870; }
+    .about-layout { display: grid; grid-template-columns: 1.2fr 0.8fr; gap: 5rem; align-items: start; }
+    .about-body p { color: #b8b4ac; font-weight: 300; line-height: 1.9; margin-bottom: 1.3rem; font-size: 0.95rem; }
+    .about-body p strong { color: var(--gold-lt); font-weight: 500; }
+    .about-body p:last-child { margin-bottom: 0; }
+    .info-block { border: 1px solid rgba(255,255,255,0.07); padding: 1.4rem 1.6rem; margin-bottom: 0.9rem; }
+    .info-block h4 { font-family: var(--mono); font-size: 0.6rem; letter-spacing: 0.14em; text-transform: uppercase; color: var(--gold-lt); margin-bottom: 0.65rem; }
+    .info-block p { color: #9a9690; font-size: 0.85rem; line-height: 1.7; }
+    .info-block p strong { color: #d0ccc4; }
+    .personal-strip { margin-top: 2.5rem; padding: 1.75rem 2rem; background: rgba(176,141,87,0.06); border-left: 3px solid var(--gold); }
+    .personal-strip h4 { font-family: var(--mono); font-size: 0.6rem; letter-spacing: 0.14em; text-transform: uppercase; color: var(--gold-lt); margin-bottom: 0.65rem; }
+    .personal-strip p { color: #a0998f; font-size: 0.9rem; line-height: 1.8; font-style: italic; }
+    .personal-strip p strong { color: var(--gold-lt); font-style: normal; }
+    .interest-row { display: flex; flex-wrap: wrap; gap: 0.45rem; margin-top: 1rem; }
+    .itag { font-family: var(--mono); font-size: 0.6rem; letter-spacing: 0.06em; text-transform: uppercase; padding: 0.28rem 0.7rem; border: 1px solid rgba(176,141,87,0.25); color: var(--gold-lt); }
+
+    /* SKILLS */
+    #skills { background: var(--cream); }
+    .skills-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 1.25rem; }
+    .skill-card { background: #fff; border: 1px solid var(--rule); padding: 1.9rem; position: relative; overflow: hidden; transition: box-shadow 0.22s, transform 0.22s; }
+    .skill-card:hover { box-shadow: 0 8px 32px rgba(0,0,0,0.07); transform: translateY(-2px); }
+    .skill-card::after { content: ''; position: absolute; bottom: 0; left: 0; right: 0; height: 2px; background: var(--teal); transform: scaleX(0); transform-origin: left; transition: transform 0.3s; }
+    .skill-card:hover::after { transform: scaleX(1); }
+    .sk-icon { font-size: 1.4rem; margin-bottom: 0.9rem; }
+    .skill-card h3 { font-size: 0.72rem; font-weight: 600; color: var(--teal); letter-spacing: 0.08em; margin-bottom: 0.55rem; text-transform: uppercase; font-family: var(--mono); }
+    .skill-card p { font-size: 0.83rem; color: var(--muted); line-height: 1.65; }
+    .tag-row { display: flex; flex-wrap: wrap; gap: 0.35rem; margin-top: 0.9rem; }
+    .chip { font-family: var(--mono); font-size: 0.58rem; letter-spacing: 0.06em; padding: 0.18rem 0.5rem; border: 1px solid var(--rule); color: var(--muted); text-transform: uppercase; }
+
+    /* EXPERIENCE */
+    #experience { background: var(--paper); }
+    .timeline { border-left: 1px solid var(--rule); padding-left: 2.5rem; }
+    .t-item { position: relative; margin-bottom: 3rem; }
+    .t-item::before { content: ''; position: absolute; left: -2.82rem; top: 0.5rem; width: 9px; height: 9px; background: var(--teal); border: 2px solid var(--paper); }
+    .t-item:first-child::before { background: var(--gold); }
+    .t-meta { font-family: var(--mono); font-size: 0.63rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--muted); margin-bottom: 0.3rem; }
+    .t-item h3 { font-family: var(--serif); font-size: 1.55rem; font-weight: 400; color: var(--ink); line-height: 1.15; margin-bottom: 0.2rem; }
+    .t-org { font-size: 0.8rem; color: var(--teal); font-weight: 600; letter-spacing: 0.02em; margin-bottom: 0.9rem; }
+    .t-bullets { list-style: none; }
+    .t-bullets li { font-size: 0.87rem; color: var(--muted); line-height: 1.7; padding-left: 1.2rem; position: relative; margin-bottom: 0.38rem; }
+    .t-bullets li::before { content: '—'; position: absolute; left: 0; color: var(--gold); font-size: 0.75rem; top: 0.05rem; }
+    .t-bullets li strong { color: var(--ink); font-weight: 500; }
+
+    /* PUBLICATIONS */
+    #publications { background: var(--dark2); color: var(--paper); }
+    #publications .label { color: var(--gold-lt); }
+    #publications .label::before { background: var(--gold-lt); }
+    #publications h2 { color: #f0ede6; }
+    #publications h2 em { color: var(--gold-lt); }
+    #publications .lead { color: #7a7870; }
+    .pub-list { display: flex; flex-direction: column; }
+    .pub-row { display: grid; grid-template-columns: 2.5rem 1fr 5rem; gap: 1.25rem; align-items: start; padding: 1.35rem 1.5rem; border-bottom: 1px solid rgba(255,255,255,0.05); transition: background 0.2s; }
+    .pub-row:first-child { border-top: 1px solid rgba(255,255,255,0.05); }
+    .pub-row:hover { background: rgba(255,255,255,0.025); }
+    .pub-n { font-family: var(--mono); font-size: 0.62rem; color: #2e3340; padding-top: 0.1rem; }
+    .pub-title { font-size: 0.88rem; color: #ccc8c0; line-height: 1.55; margin-bottom: 0.3rem; }
+    .pub-title strong { color: #ede8e0; }
+    .pub-meta { font-family: var(--mono); font-size: 0.62rem; color: var(--gold-lt); letter-spacing: 0.04em; }
+    .pub-if-badge { font-family: var(--mono); font-size: 0.6rem; text-align: center; padding: 0.28rem 0.5rem; background: rgba(176,141,87,0.1); color: var(--gold-lt); border: 1px solid rgba(176,141,87,0.2); white-space: nowrap; align-self: start; margin-top: 0.1rem; }
+    .reviewer-strip { margin-top: 2.5rem; padding: 1.5rem 2rem; background: rgba(42,107,114,0.1); border: 1px solid rgba(42,107,114,0.22); display: flex; align-items: center; gap: 1.5rem; }
+    .reviewer-icon { font-size: 1.75rem; }
+    .reviewer-text h4 { font-family: var(--mono); font-size: 0.62rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--teal-lt); margin-bottom: 0.3rem; }
+    .reviewer-text p { font-size: 0.84rem; color: #8a8880; line-height: 1.55; }
+
+    /* AWARDS */
+    #awards { background: var(--cream); }
+    .awards-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(270px,1fr)); gap: 1rem; }
+    .award-card { background: #fff; border: 1px solid var(--rule); padding: 1.4rem 1.5rem; display: flex; gap: 1rem; align-items: flex-start; transition: box-shadow 0.2s; }
+    .award-card:hover { box-shadow: 0 4px 18px rgba(0,0,0,0.06); }
+    .award-card.featured { border-left: 3px solid var(--gold); }
+    .aw-icon { font-size: 1.3rem; flex-shrink: 0; }
+    .aw-body h4 { font-size: 0.86rem; font-weight: 600; color: var(--ink); margin-bottom: 0.2rem; line-height: 1.35; }
+    .aw-body p { font-family: var(--mono); font-size: 0.6rem; color: var(--muted); letter-spacing: 0.05em; text-transform: uppercase; }
+
+    /* CONTACT */
+    #contact { background: var(--teal); color: #fff; text-align: center; padding: 7rem 4rem; }
+    #contact .label { color: rgba(255,255,255,0.45); justify-content: center; }
+    #contact .label::before { background: rgba(255,255,255,0.45); }
+    #contact h2 { color: #fff; margin-bottom: 1rem; }
+    #contact h2 em { color: #a8d8dc; }
+    #contact p { color: rgba(255,255,255,0.7); max-width: 520px; margin: 0 auto 2.5rem; font-weight: 300; }
+    #contact .btn-primary { background: #fff; color: var(--teal); border-color: #fff; }
+    #contact .btn-primary:hover { background: #e8f4f5; }
+    #contact .btn-ghost { border-color: rgba(255,255,255,0.4); color: #fff; }
+    #contact .btn-ghost:hover { background: rgba(255,255,255,0.1); border-color: rgba(255,255,255,0.7); }
+
+    /* FOOTER */
+    footer { background: var(--dark); color: #2d3240; padding: 2rem 6rem; display: flex; align-items: center; justify-content: space-between; font-family: var(--mono); font-size: 0.63rem; letter-spacing: 0.05em; }
+
+    /* ANIMATIONS */
+    .fade-in { opacity: 0; animation: fadeIn 0.75s ease forwards; }
+    @keyframes fadeIn { to { opacity: 1; } }
+    .d1{animation-delay:0.12s} .d2{animation-delay:0.28s} .d3{animation-delay:0.44s} .d4{animation-delay:0.6s}
+    .reveal { opacity: 0; transform: translateY(20px); transition: opacity 0.6s ease, transform 0.6s ease; }
+    .reveal.visible { opacity: 1; transform: none; }
+
+    /* RESPONSIVE */
+    @media (max-width: 1100px) {
+      section { padding: 4.5rem 3rem; }
+      .skills-grid { grid-template-columns: repeat(2,1fr); }
+      .hero { grid-template-columns: 1fr; }
+      .hero-right { padding: 1.5rem 3rem 4rem; flex-direction: row; flex-wrap: wrap; gap: 1rem; }
+      .stat-card { max-width: 280px; }
+      .about-layout { grid-template-columns: 1fr; gap: 2.5rem; }
+    }
+    @media (max-width: 680px) {
+      nav { padding: 1rem 1.5rem; }
+      .nav-links li:nth-child(n+4) { display: none; }
+      section { padding: 3.5rem 1.5rem; }
+      .skills-grid { grid-template-columns: 1fr; }
+      .hero-text { padding: 3rem 1.5rem 2rem; }
+      .pub-row { grid-template-columns: 2rem 1fr; }
+      .pub-if-badge { display: none; }
+      footer { flex-direction: column; gap: 0.5rem; text-align: center; padding: 2rem 1.5rem; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <span class="nav-logo">Shreeya Sharma</span>
+  <ul class="nav-links">
+    <li><a href="#about">About</a></li>
+    <li><a href="#skills">Skills</a></li>
+    <li><a href="#experience">Experience</a></li>
+    <li><a href="#publications">Publications</a></li>
+    <li><a href="#awards">Recognition</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-text">
+    <p class="eyebrow fade-in">Microbiology · Molecular Biology · Biotech R&D</p>
+    <h1 class="fade-in d1">Shreeya<br /><em>Sharma</em></h1>
+    <p class="hero-sub fade-in d2">
+      Ph.D. researcher with <strong>15 peer-reviewed publications</strong> — including in <em>Nature Scientific Reports</em> — and direct GMP industry experience. A <strong>two-time Interdisciplinary Research Fellow</strong> (2024 &amp; 2025) bridging academic science to biotech impact.
+    </p>
+    <div class="btn-row fade-in d3">
+      <a href="#experience" class="btn btn-primary">Explore My Work</a>
+      <a href="#contact" class="btn btn-ghost">Get in Touch</a>
+    </div>
+  </div>
+  <div class="hero-right fade-in d4">
+    <div class="live-badge"><span class="live-dot"></span>Open to Industry Roles</div>
+    <div class="stat-card">
+      <div class="stat-label-sm">Peer-Reviewed Publications</div>
+      <div class="stat-val">15</div>
+      <div class="stat-sub">incl. Nature Scientific Reports &amp; PLoS ONE</div>
+    </div>
+    <div class="stat-card gold">
+      <div class="stat-label-sm">Interdisciplinary Research Fellowship</div>
+      <div class="stat-val">×2</div>
+      <div class="stat-sub">Clemson University · 2024 &amp; 2025</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-label-sm">GMP Industry Experience</div>
+      <div class="stat-val">1 yr</div>
+      <div class="stat-sub">Vaccine R&amp;D · QA/QC · SOP Development</div>
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section id="about">
+  <div class="label">About</div>
+  <h2>Scientist. <em>Communicator.</em><br />Industry-Ready.</h2>
+  <p class="lead">From vaccine manufacturing floors in Nepal to genomic research labs at Clemson — a rare blend of GMP rigor, molecular expertise, and global perspective.</p>
+
+  <div class="about-layout">
+    <div class="about-body">
+      <p>
+        Shreeya Sharma is a Ph.D. candidate in Animal and Veterinary Sciences at Clemson University whose research sits at the intersection of microbiology, immunology, and microbiome science. She has authored <strong>more than a dozen peer-reviewed publications</strong> in leading journals such as <strong>Nature Scientific Reports</strong> and <strong>PLoS ONE</strong>, and is a <strong>two-time recipient of the Clemson University Interdisciplinary Research Fellowship</strong> (2024 &amp; 2025).
+      </p>
+      <p>
+        Recognized for science communication, Shreeya earned <strong>second place in the Clemson Three Minute Thesis competition</strong> and <strong>second place in the Clemson Data Visualization Contest (2026)</strong>. Her research integrates molecular biology, immunology, and microbiome sequencing to address one of the most pressing challenges of our time: <strong>reducing antibiotic dependence</strong> while protecting both animal and human health.
+      </p>
+      <p>
+        Before her doctoral work she served as a Research Associate at <strong>BIOVAC Nepal</strong> — a GMP-aligned vaccine manufacturer — where she led a U.S. Department of State Biosecurity Project and built the regulatory fluency that sets her apart. She is a fellow of Clemson's <strong>Accelerate to Industry (A2i)</strong> program, an <strong>active peer reviewer</strong> for well-established scientific journals, and an industry collaborator with AGRITX Biotech.
+      </p>
+
+      <div class="personal-strip">
+        <h4>Beyond the Lab</h4>
+        <p>
+          Raised in a military family, Shreeya brings a rare discipline and composure to everything she does — thriving under pressure, meeting deadlines without compromise, and leading with quiet confidence. Outside the lab, she keeps life full: playing <strong>pickleball with her fiancé</strong>, experimenting in the kitchen, swimming laps to reset, and riding horses whenever the opportunity arises. She believes the best science comes from people who live fully.
+        </p>
+        <div class="interest-row">
+          <span class="itag">🏓 Pickleball</span>
+          <span class="itag">🍳 Cooking</span>
+          <span class="itag">🏊 Swimming</span>
+          <span class="itag">🐴 Horse Riding</span>
+          <span class="itag">🪖 Military Family</span>
+        </div>
+      </div>
+    </div>
+
+    <div>
+      <div class="info-block">
+        <h4>🎓 Education</h4>
+        <p>
+          <strong>Ph.D. Animal &amp; Veterinary Sciences</strong><br />Clemson University · 2024–Present<br /><br />
+          <strong>M.S. Animal &amp; Veterinary Sciences</strong><br />Clemson University · 2022–2024 · GPA 3.85
+        </p>
+      </div>
+      <div class="info-block">
+        <h4>🌍 Global Experience</h4>
+        <p>Research &amp; industry experience spanning the U.S. and Nepal. Involvement in USAID's PREDICT global surveillance initiative and U.S. Embassy-funded biosecurity projects.</p>
+      </div>
+      <div class="info-block">
+        <h4>📣 Science Communication</h4>
+        <p>
+          2nd Place · Clemson 3 Minute Thesis (2025)<br />
+          2nd Place · Clemson Data Visualization Contest (2026)<br />
+          1st Place · CAFLS 3MT (2023)<br />
+          Presenter: PSA, ASM, IPPE conferences
+        </p>
+      </div>
+      <div class="info-block">
+        <h4>🏭 Industry Alignment</h4>
+        <p>A2i Fellow · Peer Reviewer · AGRITX Biotech Collaborator · GMP-trained · SOP-certified · IACUC-approved</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SKILLS -->
+<section id="skills">
+  <div class="label">Technical Expertise</div>
+  <h2>Core <em>Competencies</em></h2>
+  <p class="lead">A comprehensive toolkit spanning wet lab, bioinformatics, regulatory compliance, and data science — built for the demands of modern biotech.</p>
+  <div class="skills-grid">
+    <div class="skill-card reveal">
+      <div class="sk-icon">🧬</div>
+      <h3>Molecular Biology</h3>
+      <p>DNA/RNA extraction, RT-qPCR, primer design, cDNA synthesis, gel electrophoresis, standard curve generation, Illumina amplicon sequencing, NGS library preparation.</p>
+      <div class="tag-row"><span class="chip">qPCR</span><span class="chip">RNA-seq</span><span class="chip">Illumina</span><span class="chip">NGS</span></div>
+    </div>
+    <div class="skill-card reveal">
+      <div class="sk-icon">🦠</div>
+      <h3>Microbiology</h3>
+      <p>Microbial culture, CFU enumeration, ELISA, sterility &amp; potency testing, in vivo probiotic administration, histopathology, BSL-1/BSL-2 protocols.</p>
+      <div class="tag-row"><span class="chip">ELISA</span><span class="chip">BSL-2</span><span class="chip">Sterility</span><span class="chip">CFU</span></div>
+    </div>
+    <div class="skill-card reveal">
+      <div class="sk-icon">💻</div>
+      <h3>Bioinformatics</h3>
+      <p>QIIME2, DADA2, SILVA/RDP, Mothur, Phyloseq, MaAsLin2, LEfSe, FastQC, VSEARCH, PyMol, NCBI BLAST, UCSC Genome Browser.</p>
+      <div class="tag-row"><span class="chip">QIIME2</span><span class="chip">DADA2</span><span class="chip">Python</span><span class="chip">HPC</span></div>
+    </div>
+    <div class="skill-card reveal">
+      <div class="sk-icon">📋</div>
+      <h3>GMP &amp; Regulatory</h3>
+      <p>GMP-aligned manufacturing workflows, SOP development, stability testing, regulatory documentation, IACUC protocols, USDA biosecurity standards, CITI training.</p>
+      <div class="tag-row"><span class="chip">GMP</span><span class="chip">SOP</span><span class="chip">IACUC</span><span class="chip">QA/QC</span></div>
+    </div>
+    <div class="skill-card reveal">
+      <div class="sk-icon">📊</div>
+      <h3>Data Analysis &amp; Visualization</h3>
+      <p>R, GraphPad Prism, Python, Bash/Shell scripting, ArcGIS, machine learning, statistical modeling, HPC. Recognized for data visualization excellence (2nd Place, Clemson 2026).</p>
+      <div class="tag-row"><span class="chip">R</span><span class="chip">Python</span><span class="chip">ML</span><span class="chip">ArcGIS</span></div>
+    </div>
+    <div class="skill-card reveal">
+      <div class="sk-icon">🐾</div>
+      <h3>Animal Research</h3>
+      <p>In vivo animal trials, necropsy, clinical observations, hematological &amp; biochemical profiling, IACUC-compliant experimental design, poultry disease surveillance.</p>
+      <div class="tag-row"><span class="chip">In vivo</span><span class="chip">Necropsy</span><span class="chip">IACUC</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- EXPERIENCE -->
+<section id="experience">
+  <div class="label">Career</div>
+  <h2>Work <em>Experience</em></h2>
+  <p class="lead">Industry and academic roles that built a versatile, compliance-fluent, industry-ready researcher.</p>
+  <div class="timeline">
+
+    <div class="t-item reveal">
+      <div class="t-meta">Aug 2022 – Present · Clemson, SC</div>
+      <h3>Graduate Research Assistant</h3>
+      <div class="t-org">Department of Animal &amp; Veterinary Sciences, Clemson University</div>
+      <ul class="t-bullets">
+        <li>Conducting independent and collaborative research resulting in <strong>15 peer-reviewed publications</strong>, including one in <em>Nature Scientific Reports</em>.</li>
+        <li>Applying molecular biology techniques (RNA/DNA extraction, PCR, RT-qPCR) to evaluate gene expression and characterize host immune responses across tissues.</li>
+        <li>Running high-throughput amplicon sequencing to profile gut microbiomes using QIIME2 and DADA2 pipelines on HPC clusters.</li>
+        <li>Collaborating with <strong>AGRITX Biotech</strong> on an industry-facing molecular diagnostics project for poultry — directly bridging academic research to commercial application.</li>
+        <li>Developing SOPs for laboratory workflows, assay execution, and compliance documentation.</li>
+        <li>Training and supervising ~10 undergraduate researchers in lab techniques and safety protocols under Creative Inquiry projects.</li>
+        <li>Serving as a <strong>peer reviewer</strong> for well-established scientific journals in microbiology and veterinary sciences.</li>
+      </ul>
+    </div>
+
+    <div class="t-item reveal">
+      <div class="t-meta">Aug 2021 – Jul 2022 · Kathmandu, Nepal</div>
+      <h3>Research Associate</h3>
+      <div class="t-org">BIOVAC Nepal — Vaccine Manufacturing (GMP-aligned)</div>
+      <ul class="t-bullets">
+        <li>Supported vaccine R&amp;D and quality testing in a GMP-aligned manufacturing environment.</li>
+        <li>Conducted sterility, potency, and stability testing using ELISA and culture-based assays.</li>
+        <li>Collaborated with QA/QC and production teams on batch quality evaluation and deviation management.</li>
+        <li>Prepared SOPs, technical reports, and regulatory documentation.</li>
+        <li>Led a <strong>U.S. Department of State Biosecurity Project</strong> and participated in biosafety risk assessments and protocol implementation.</li>
+      </ul>
+    </div>
+
+    <div class="t-item reveal">
+      <div class="t-meta">Kathmandu, Nepal</div>
+      <h3>Research Intern</h3>
+      <div class="t-org">Centre for Molecular Dynamics Nepal — USAID PREDICT Project</div>
+      <ul class="t-bullets">
+        <li>Contributed to USAID's PREDICT global surveillance initiative targeting zoonotic viruses with pandemic potential at high-risk human-animal interfaces.</li>
+        <li>Gained foundational exposure to One Health frameworks, biosurveillance, and international public health research.</li>
+      </ul>
+    </div>
+
+  </div>
+</section>
+
+<!-- PUBLICATIONS -->
+<section id="publications">
+  <div class="label">Research Output</div>
+  <h2>Selected <em>Publications</em></h2>
+  <p class="lead">15 peer-reviewed publications across leading journals. First or co-author on the majority of works. Active peer reviewer for established journals.</p>
+
+  <div class="pub-list">
+    <div class="pub-row reveal">
+      <span class="pub-n">01</span>
+      <div>
+        <div class="pub-title"><strong>Sharma, S.</strong>, Seekatz, A., Alizadeh, M. et al. Early-life supplementation of poultry-derived lactobacilli drives microbial succession and gut immune modulation in broiler chickens.</div>
+        <div class="pub-meta">Nature Scientific Reports · 2026 · doi:10.1038/s41598-026-35177-2</div>
+      </div>
+      <div class="pub-if-badge">IF 3.9</div>
+    </div>
+    <div class="pub-row reveal">
+      <span class="pub-n">02</span>
+      <div>
+        <div class="pub-title">Naguib, M., Comfort, S.O., <strong>Sharma, S.</strong> et al. Mucosal Delivery (In ovo and Oral) of Chitosan Nanoparticle-Based Subunit Vaccine Enhances Resistance Against <em>Campylobacter jejuni</em>.</div>
+        <div class="pub-meta">Vaccine (Elsevier) · 2025</div>
+      </div>
+      <div class="pub-if-badge">IF 4.5</div>
+    </div>
+    <div class="pub-row reveal">
+      <span class="pub-n">03</span>
+      <div>
+        <div class="pub-title"><strong>Sharma, S.</strong>, Kaur, S., Naguib, M. et al. Major Foodborne Bacterial Pathogens in Poultry: Implications for Human Health and Probiotic Mitigation Strategies.</div>
+        <div class="pub-meta">Microorganisms · 2025 · doi:10.3390/microorganisms13102363</div>
+      </div>
+      <div class="pub-if-badge">IF 4.2</div>
+    </div>
+    <div class="pub-row reveal">
+      <span class="pub-n">04</span>
+      <div>
+        <div class="pub-title">Abdelaziz, K.; <strong>Sharma, S.</strong>; Naguib, M.; Stamatikos, A. Epithelial–Macrophage Crosstalk in Host Responses to <em>Campylobacter</em> Infection.</div>
+        <div class="pub-meta">Microorganisms · 2025</div>
+      </div>
+      <div class="pub-if-badge">IF 4.2</div>
+    </div>
+    <div class="pub-row reveal">
+      <span class="pub-n">05</span>
+      <div>
+        <div class="pub-title">Naguib, M., <strong>Sharma, S.</strong> et al. A multi-antigen subunit vaccine enhances antibody-mediated immune response against Campylobacter in layer breeders and sustains maternal antibody levels in offspring.</div>
+        <div class="pub-meta">Poultry Science · 2025 · doi:10.1016/j.psj.2025.104898</div>
+      </div>
+      <div class="pub-if-badge">IF 4.2</div>
+    </div>
+    <div class="pub-row reveal">
+      <span class="pub-n">06</span>
+      <div>
+        <div class="pub-title"><strong>Sharma, S.</strong>, Alizadeh, M., Pratt, S. et al. Differential expression of key immune markers in the intestinal tract of developing chick embryos.</div>
+        <div class="pub-meta">Veterinary Sciences · 2025 · doi:10.3390/vetsci12020186</div>
+      </div>
+      <div class="pub-if-badge">IF 2.3</div>
+    </div>
+    <div class="pub-row reveal">
+      <span class="pub-n">07</span>
+      <div>
+        <div class="pub-title"><strong>Sharma, S.</strong>, Kulkarni, R.R., Sharif, S. et al. In ovo feeding of probiotic lactobacilli differentially alters expression of genes involved in immunological maturation of bursa of Fabricius.</div>
+        <div class="pub-meta">Poultry Science · 2024 · doi:10.1016/j.psj.2023.103237</div>
+      </div>
+      <div class="pub-if-badge">IF 4.2</div>
+    </div>
+    <div class="pub-row reveal">
+      <span class="pub-n">08</span>
+      <div>
+        <div class="pub-title">Poudel, A., <strong>Sharma, S.</strong> et al. Antimicrobial stewardship hindered by inadequate biosecurity and inappropriate antibiotic usage in poultry farms of Nepal.</div>
+        <div class="pub-meta">PLoS ONE · 2024 · doi:10.1371/journal.pone.0296911</div>
+      </div>
+      <div class="pub-if-badge">IF 3.75</div>
+    </div>
+  </div>
+
+  <div class="reviewer-strip reveal">
+    <div class="reviewer-icon">📝</div>
+    <div class="reviewer-text">
+      <h4>Peer Reviewer</h4>
+      <p>Active reviewer for well-established peer-reviewed journals in microbiology, veterinary sciences, and food safety — contributing to scientific quality assurance beyond her own research.</p>
+    </div>
+  </div>
+</section>
+
+<!-- AWARDS -->
+<section id="awards">
+  <div class="label">Recognition</div>
+  <h2>Honors &amp; <em>Awards</em></h2>
+  <p class="lead">Competitive fellowships, research prizes, and international recognitions reflecting consistent excellence across research, communication, and leadership.</p>
+  <div class="awards-grid">
+    <div class="award-card featured reveal">
+      <div class="aw-icon">🏅</div>
+      <div class="aw-body">
+        <h4>2nd Place — Clemson 3 Minute Thesis</h4>
+        <p>Clemson University · November 2025</p>
+      </div>
+    </div>
+    <div class="award-card featured reveal">
+      <div class="aw-icon">📊</div>
+      <div class="aw-body">
+        <h4>2nd Place — Data Visualization Contest</h4>
+        <p>Data Visualization Lab, Clemson University · 2026</p>
+      </div>
+    </div>
+    <div class="award-card featured reveal">
+      <div class="aw-icon">🔬</div>
+      <div class="aw-body">
+        <h4>Interdisciplinary Research Fellowship ×2</h4>
+        <p>Clemson University · 2024 &amp; 2025</p>
+      </div>
+    </div>
+    <div class="award-card reveal">
+      <div class="aw-icon">🏆</div>
+      <div class="aw-body">
+        <h4>Wade Stackhouse Fellowship</h4>
+        <p>Clemson University · September 2025</p>
+      </div>
+    </div>
+    <div class="award-card reveal">
+      <div class="aw-icon">✈️</div>
+      <div class="aw-body">
+        <h4>Graduate Travel Grants</h4>
+        <p>IPPE 2025 &amp; PSA 2025 · Clemson University</p>
+      </div>
+    </div>
+    <div class="award-card reveal">
+      <div class="aw-icon">🌟</div>
+      <div class="aw-body">
+        <h4>1st Place — CAFLS 3 Minute Thesis</h4>
+        <p>Clemson University Research Symposium · 2023</p>
+      </div>
+    </div>
+    <div class="award-card reveal">
+      <div class="aw-icon">🐔</div>
+      <div class="aw-body">
+        <h4>Morgan Poultry Fellowship</h4>
+        <p>Clemson University · 2023</p>
+      </div>
+    </div>
+    <div class="award-card reveal">
+      <div class="aw-icon">💊</div>
+      <div class="aw-body">
+        <h4>Merck–World Veterinary Association Scholarship</h4>
+        <p>World Veterinary Association · 2018</p>
+      </div>
+    </div>
+    <div class="award-card reveal">
+      <div class="aw-icon">⭐</div>
+      <div class="aw-body">
+        <h4>Nominated — Outstanding Graduate Student in Research</h4>
+        <p>Clemson University · 2025</p>
+      </div>
+    </div>
+    <div class="award-card reveal">
+      <div class="aw-icon">🖥️</div>
+      <div class="aw-body">
+        <h4>Honorable Mention — HPC Day Poster Contest</h4>
+        <p>Clemson University · October 2025</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact">
+  <div class="label">Let's Connect</div>
+  <h2>Ready to Bring Science<br />to <em>Real Impact</em></h2>
+  <p>Actively seeking biotech industry roles in R&D, quality assurance, or translational research. Let's talk about how my background can drive your team's mission forward.</p>
+  <div class="btn-row" style="justify-content:center; gap:1rem;">
+    <a href="mailto:shreeyasharma@clemson.edu" class="btn btn-primary">Send an Email</a>
+    <a href="https://www.linkedin.com/in/shreeya-sharma" target="_blank" class="btn btn-ghost">LinkedIn Profile</a>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <span>© 2026 Shreeya Sharma</span>
+  <span>Ph.D. Candidate · Clemson University · Microbiology &amp; Biotech</span>
+</footer>
+
+<script>
+  const obs = new IntersectionObserver((entries) => {
+    entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
+  }, { threshold: 0.07 });
+  document.querySelectorAll('.reveal').forEach(el => obs.observe(el));
+</script>
+</body>
+</html>
